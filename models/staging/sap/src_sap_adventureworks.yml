@@ -43,3 +43,53 @@ sources:
               - not_null
               - unique    
                   
+      - name: salesorderheader
+        description: Tabela contendo o cabeçalho dos pedidos de venda
+        columns:
+          - name: salesorderid
+            description: chave primaria
+            tests:
+              - not_null
+              - unique    
+
+      - name: salesorderdetail
+        description: Tabela contendo os pedidos de venda
+        columns:
+          - name: salesorderid
+            description: chave primaria
+            tests:
+              - not_null
+              - unique    
+            
+      - name: creditcard
+        description: Tabela contendo informações sobre cartões de credito
+        columns:
+          - name: creditcardid
+            description: chave primaria
+            tests:
+              - not_null
+              - unique    
+
+      - name: personcreditcard
+        description: Tabela contendo informações sobre cartões de credito
+       
+      - name: salesorderheadersalesreason
+        description: Tabela de referencia para as tabela de motivos de venda
+
+      - name: salesreason
+        description: Tabela contendo os motivos de venda
+        columns:
+          - name: salesreasonid
+            description: chave primaria
+            tests:
+              - not_null
+              - unique   
+
+      - name: product
+        description: Tabela contendo os produtos
+        columns:
+          - name: productid
+            description: chave primaria
+            tests:
+              - not_null
+              - unique
