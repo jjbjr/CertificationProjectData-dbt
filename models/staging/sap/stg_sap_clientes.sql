@@ -10,8 +10,8 @@ with
             , cast(personid as integer) as fk_id_pessoa	
             , cast(storeid as integer) as fk_id_loja
             , cast(territoryid as integer) as fk_id_territorio			
-            , cast(rowguid as string) as rowguid
-            , cast(modifieddate as string) as data_modificada		
+            , cast(rowguid as string) as rowguid_cliente
+            , cast(modifieddate as string) as data_modificada_cliente		
         from fonte_clientes
     )
 select *
