@@ -14,7 +14,7 @@ with
             --, costytd				
             --, costlastyear				
             , cast (rowguid as string) as rowguid_territoriovendas					
-            , cast (modifieddate as string) as data_modificada_territoriovendas		               
+            , cast (modifieddate as datetime) as data_modificada_territoriovendas		               
         from fonte_territoriovendas
     )
 select *

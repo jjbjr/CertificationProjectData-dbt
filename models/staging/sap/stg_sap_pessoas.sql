@@ -3,7 +3,7 @@ with
         select *                
         from {{ source('sap', 'person') }}
     )
-    
+
     , renomear as (
         select
             cast(businessentityid as integer) as pk_id_entidadenegocio 						
@@ -17,7 +17,7 @@ with
             --, additionalcontactinfo						
             --, demographics						
             , cast(rowguid as string) as rowguid_pessoa					
-            , cast(modifieddate as string) as data_modificada_pessoa			               
+            , cast(modifieddate as datetime) as data_modificada_pessoa			               
         from fonte_pessoas
     )
 select *

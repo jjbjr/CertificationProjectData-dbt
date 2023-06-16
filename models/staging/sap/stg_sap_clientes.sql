@@ -11,7 +11,7 @@ with
             , cast(storeid as integer) as fk_id_loja
             , cast(territoryid as integer) as fk_id_territorio			
             , cast(rowguid as string) as rowguid_cliente
-            , cast(modifieddate as string) as data_modificada_cliente		
+            , cast(modifieddate as datetime) as data_modificada_cliente		
         from fonte_clientes
     )
 select *

@@ -33,4 +33,13 @@ sources:
             tests:
               - not_null
               - unique
+
+      - name: businessentity
+        description: Tabela contendo as chaves para as tabelas custumer, vendor, employee
+        columns:
+          - name: businessentityid
+            description: chave primaria
+            tests:
+              - not_null
+              - unique    
                   

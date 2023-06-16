@@ -1,4 +1,4 @@
-/* maior tabela: person */
+/* maior tabela: businessentity */
 
 with 
     clientes as (
@@ -16,36 +16,37 @@ with
         from {{ ref('stg_sap_territoriovendas') }}
     )
 
+    , entidadenegocios as (
+        select *
+        from {{ ref('stg_sap_entidadenegocios') }}
+
+    )
+
     , join_tabelas as (
         select
-            pk_id_entidadenegocio 
-            , pk_id_cliente			
-            , fk_id_pessoa	
+            entidadenegocios.pk_id_entidadenegocio as pk_id_entidadenegocio
+            , clientes.pk_id_cliente as pk_id_cliente
+            , territoriovendas.pk_id_territorio as fk_id_territorio
+            , fk_id_pessoa 
             , fk_id_loja
-            , fk_id_territorio	
-            , pk_id_territorio						
-            , tipo_pessoa						
-            , cliente					
-            , rowguid_pessoa					
-            , data_modificada_pessoa	
-		
-            , rowguid_cliente
-            , data_modificada_cliente
-            				
-            , territorio					
-            , sigla					
-            , regiao					
-            , rowguid_territoriovendas					
-            , data_modificada_territoriovendas		
-        from 
-
-
+            , cliente
+            , tipo_pessoa
+            , territorio
+            , sigla
+            , regiao
+        from entidadenegocios 
+        left join pessoas on pessoas.pk_id_entidadenegocio = entidadenegocios.pk_id_entidadenegocio
+        left join clientes on pessoas.pk_id_entidadenegocio = clientes.fk_id_pessoa
+        left join territoriovendas on clientes.fk_id_territorio = territoriovendas.pk_id_territorio 
     )
 
-    , transformacoes as (
+   , transformacoes as (
+        select
+        {{ dbt_utils.generate_surrogate_key(['pk_id_entidadenegocio', 'pk_id_cliente']) }} as sk_cliente
+        , *
+        from join_tabelas
 
-
-    )
+   )
 
 select *
 from transformacoes
