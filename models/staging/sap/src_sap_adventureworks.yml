@@ -1,0 +1,45 @@
+version: 2
+
+sources:
+  - name: sap
+    description: Fonte do SAP da Adventure Works
+    schema: sap_adw
+    
+    tables:
+
+      - name: customer 
+        description: Tabela com as informações de clientes
+        columns:
+          - name: customerid
+            description: chave primaria da tabela clientes
+            tests:
+              - unique
+              - not_null
+                  
+      - name: person
+        description: Tabela com as infomrações de pessoas
+        columns:
+          - name: businessentityid
+            description: chave primaria da tabela pessoas
+            tests:
+              - not_null
+              - unique
+                  
+      - name: salesterritory
+        description: Tabela contendo informações do território de vendas
+        columns:
+          - name: territoryid
+            description: chave primaria da tabela territorio de vendas
+            tests:
+              - not_null
+              - unique
+
+      - name: businessentity
+        description: Tabela contendo as chaves para as tabelas custumer, vendor, employee
+        columns:
+          - name: businessentityid
+            description: chave primaria
+            tests:
+              - not_null
+              - unique    
+                  
