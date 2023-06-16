@@ -25,3 +25,12 @@ sources:
               - not_null
               - unique
                   
+      - name: salesterritory
+        description: Tabela contendo informações do território de vendas
+        columns:
+          - name: territoryid
+            description: chave primaria da tabela territorio de vendas
+            tests:
+              - not_null
+              - unique
+                  
