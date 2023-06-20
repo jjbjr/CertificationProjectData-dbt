@@ -1,4 +1,5 @@
 /* maior tabela: businessentity */
+
 with
     clientes as (
         select * 
@@ -67,11 +68,11 @@ with
             , pessoas.rowguid_pessoa
 
         from entidadenegocios
-        left join pessoas on pessoas.fk_id_entidadenegocio = entidadenegocios.pk_id_entidadenegocio
-        left join clientes on pessoas.fk_id_entidadenegocio = clientes.fk_id_pessoa
+        left join pessoas on entidadenegocios.pk_id_entidadenegocio = pessoas.fk_id_entidadenegocio 
+        left join clientes on entidadenegocios.pk_id_entidadenegocio = clientes.fk_id_pessoa
         left join territoriovendas on clientes.fk_id_territorio = territoriovendas.pk_id_territorio
-        left join cartoesclientes on cartoesclientes.fk_id_entidadenegocio = entidadenegocios.pk_id_entidadenegocio
-        left join cartoes on cartoes.pk_id_cartao = cartoesclientes.fk_id_cartao
+        left join cartoesclientes on entidadenegocios.pk_id_entidadenegocio = cartoesclientes.fk_id_entidadenegocio
+        left join cartoes on cartoesclientes.fk_id_cartao = cartoes.pk_id_cartao
     )
     , transformacoes as (
         select
@@ -86,4 +87,5 @@ with
 
 select *
 from transformacoes
-order by pk_id_cliente
+order by pk_id_entidadenegocio asc
+

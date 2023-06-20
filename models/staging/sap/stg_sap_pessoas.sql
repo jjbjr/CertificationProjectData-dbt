@@ -6,7 +6,7 @@ with
 
     , renomear as (
         select
-            cast(businessentityid as integer) as pk_id_entidadenegocio 						
+            cast(businessentityid as integer) as fk_id_entidadenegocio 						
             , cast(persontype as string) as tipo_pessoa						
             --, namestyle						
             --, title						
