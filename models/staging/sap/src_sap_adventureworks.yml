@@ -119,5 +119,4 @@ sources:
             description: chave primaria
             tests:
               - not_null
-              - unique                            
-
+              - unique                          
