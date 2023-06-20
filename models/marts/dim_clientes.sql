@@ -19,9 +19,18 @@ with
     , entidadenegocios as (
         select *
         from {{ ref('stg_sap_entidadenegocios') }}
-
     )
 
+    , cartoes as (
+        select *
+        from {{ ref('stg_sap_cartoes') }}
+    )
+
+    , cartoesclientes as (
+        select *
+        from {{ ref('stg_sap_cartoesclientes') }}
+    )
+    
     , join_tabelas as (
         select
             entidadenegocios.pk_id_entidadenegocio as pk_id_entidadenegocio

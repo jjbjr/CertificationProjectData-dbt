@@ -17,7 +17,7 @@ sources:
               - not_null
                   
       - name: person
-        description: Tabela com as infomrações de pessoas
+        description: Tabela com as infomrações de pessoas, tais como funcionarios, contatos de clientes e de vendedores
         columns:
           - name: businessentityid
             description: chave primaria da tabela pessoas
@@ -35,7 +35,7 @@ sources:
               - unique
 
       - name: businessentity
-        description: Tabela contendo as chaves para as tabelas custumer, vendor, employee
+        description: Origem dos IDs que conectam fornecedores, clientes e funcionários com endereço e informações de contato.
         columns:
           - name: businessentityid
             description: chave primaria
@@ -43,3 +43,15 @@ sources:
               - not_null
               - unique    
                   
+      - name: creditcard
+        description: Tabela contendo informações sobre os cartoes de credito dos clientes
+        columns:
+          - name: creditcardid
+            description: chave primaria
+            tests:
+              - not_null
+              - unique  
+            
+      - name: personcreditcard
+        description: Tabela de referência cruzada mapeando pessoas para suas informações de cartão de crédito na tabela CreditCard.
+        
