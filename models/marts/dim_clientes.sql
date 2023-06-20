@@ -58,9 +58,13 @@ with
         from entidadenegocios
         left join pessoas on entidadenegocios.pk_id_entidadenegocio = pessoas.fk_id_entidadenegocio 
         left join clientes on entidadenegocios.pk_id_entidadenegocio = clientes.fk_id_pessoa
-        left join territoriovendas on clientes.fk_id_territorio = territoriovendas.pk_id_territorio
-        left join cartoesclientes on entidadenegocios.pk_id_entidadenegocio = cartoesclientes.fk_id_entidadenegocio
+	    left join enderecoentidades on entidadenegocios.pk_id_entidadenegocio = enderecoentidades.fk_id_entidadenegocio
+ 	    left join endereco on enderecoentidades.fk_id_endereco = endereco.pk_id_endereco
+        left join estado on endereco.fk_id_estado = estado.pk_id_estado
+        left join pais on estado.sigla_pais = pais.sigla_pais
+  	    left join cartoesclientes on entidadenegocios.pk_id_entidadenegocio = cartoesclientes.fk_id_entidadenegocio
         left join cartoes on cartoesclientes.fk_id_cartao = cartoes.pk_id_cartao
+
     )
     , transformacoes as (
         select
