@@ -42,8 +42,7 @@ sources:
             tests:
               - not_null
               - unique    
-                  
-<<<<<<< HEAD
+
       - name: salesorderheader
         description: Tabela contendo o cabeçalho dos pedidos de venda
         columns:
@@ -94,15 +93,6 @@ sources:
             tests:
               - not_null
               - unique
-=======
-      - name: product
-        description: tabela produtos 
-        columns:
-          - name: productid
-            description: chave primaria 
-            tests:
-              - not_null
-              - unique  
 
       - name: productmodel
         description: tabela modelo dos produtos
@@ -130,4 +120,4 @@ sources:
             tests:
               - not_null
               - unique                            
->>>>>>> eb3c66d51b1d727a3ee48e06893dc0df064f6466
+
