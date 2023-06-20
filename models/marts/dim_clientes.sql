@@ -31,41 +31,29 @@ with
         from {{ ref('stg_sap_cartoesclientes') }}
     )
 
+    , endereco as (
+        select *
+        from {{ ref('stg_sap_endereco') }}
+    )
+
+    , enderecoentidades as (
+        select *
+        from {{ ref('stg_sap_enderecoentidadenegocios') }}
+    )
+
+    , estado as (
+        select *
+        from {{ ref('stg_sap_estado') }}
+    )
+
+    , pais as (
+        select * 
+        from {{ ref('stg_sap_pais') }}
+    )
+
     , join_tabelas as (
         select
-            entidadenegocios.pk_id_entidadenegocio
-            , clientes.pk_id_cliente
-            , territoriovendas.pk_id_territorio
-            , cartoes.pk_id_cartao	
-
-            , pessoas.cliente
-            , pessoas.tipo_pessoa
-            , territoriovendas.territorio
-            , territoriovendas.sigla
-            , territoriovendas.regiao	
-
-            , cartoes.bandeira_cartao		
-            , cartoes.numero_cartao					
-            , cartoes.mes_validade					
-            , cartoes.ano_validade				
-            , cartoes.data_modificada_cartoes 
-
-            --, entidadenegocios.data_modificada_entidadenegocio
-            --, pessoas.fk_id_entidadenegocio
-            --, pessoas.data_modificada_pessoa
-            --, clientes.fk_id_pessoa
-            --, clientes.fk_id_loja
-            --, clientes.fk_id_territorio
-            --, clientes.rowguid_cliente
-            --, clientes.data_modificada_cliente 		
-            --, territoriovendas.rowguid_territoriovendas
-            --, territoriovendas.data_modificada_territoriovendas
-            --, fk_id_entidadenegocio					
-            --, fk_id_cartao					
-            -- , data_modificada_cartoesclientes	
-
-            , entidadenegocios.rowguid_entidadenegocio
-            , pessoas.rowguid_pessoa
+            *
 
         from entidadenegocios
         left join pessoas on entidadenegocios.pk_id_entidadenegocio = pessoas.fk_id_entidadenegocio 
