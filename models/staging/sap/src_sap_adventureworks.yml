@@ -43,3 +43,38 @@ sources:
               - not_null
               - unique    
                   
+      - name: product
+        description: tabela produtos 
+        columns:
+          - name: productid
+            description: chave primaria 
+            tests:
+              - not_null
+              - unique  
+
+      - name: productmodel
+        description: tabela modelo dos produtos
+        columns:
+          - name: productmodelid
+            description: chave primaria
+            tests:
+              - not_null
+              - unique  
+
+      - name: productcategory
+        description: tabela contendo as categorias dos produtos
+        columns:
+          - name: productcategoryid
+            description: chave primaria
+            tests:
+              - not_null
+              - unique  
+
+      - name: productsubcategory
+        description: tabela contendo as subcategorias dos produtos
+        columns:
+          - name: productsubcategoryid
+            description: chave primaria
+            tests:
+              - not_null
+              - unique                            
