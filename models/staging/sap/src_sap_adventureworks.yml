@@ -17,7 +17,7 @@ sources:
               - not_null
                   
       - name: person
-        description: Tabela com as infomrações de pessoas, tais como funcionarios, contatos de clientes e de vendedores
+        description: Tabela com as infomrações de pessoas
         columns:
           - name: businessentityid
             description: chave primaria da tabela pessoas
@@ -35,7 +35,7 @@ sources:
               - unique
 
       - name: businessentity
-        description: Origem dos IDs que conectam fornecedores, clientes e funcionários com endereço e informações de contato.
+        description: Tabela contendo as chaves para as tabelas custumer, vendor, employee
         columns:
           - name: businessentityid
             description: chave primaria
@@ -43,15 +43,38 @@ sources:
               - not_null
               - unique    
                   
-      - name: creditcard
-        description: Tabela contendo informações sobre os cartoes de credito dos clientes
+      - name: product
+        description: tabela produtos 
         columns:
-          - name: creditcardid
+          - name: productid
+            description: chave primaria 
+            tests:
+              - not_null
+              - unique  
+
+      - name: productmodel
+        description: tabela modelo dos produtos
+        columns:
+          - name: productmodelid
             description: chave primaria
             tests:
               - not_null
               - unique  
-            
-      - name: personcreditcard
-        description: Tabela de referência cruzada mapeando pessoas para suas informações de cartão de crédito na tabela CreditCard.
-        
+
+      - name: productcategory
+        description: tabela contendo as categorias dos produtos
+        columns:
+          - name: productcategoryid
+            description: chave primaria
+            tests:
+              - not_null
+              - unique  
+
+      - name: productsubcategory
+        description: tabela contendo as subcategorias dos produtos
+        columns:
+          - name: productsubcategoryid
+            description: chave primaria
+            tests:
+              - not_null
+              - unique                            
