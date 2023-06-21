@@ -120,3 +120,34 @@ sources:
             tests:
               - not_null
               - unique                          
+      
+      - name: address
+        description: Tabela contendo informações de endreço de clientes, funcionarios e revendas
+        columns:
+          - name: addressid
+            description: chave primaria
+            tests:
+              - not_null
+              - unique
+          
+      - name: businessentityaddress
+        description: Tabela de referencia cruzada mapeando endreços de clientes, funcionarios e revendas
+        columns:
+          - name: addressid
+            description: chave primaria
+            tests:
+              - not_null
+              - unique
+                  
+      - name: stateprovince
+        description: Tabela contendo informações sobre estados e provincias
+        columns:
+          - name: stateprovinceid
+            description: chave primaria
+            tests:
+              - not_null
+              - unique  
+
+      - name: countryregion
+        description: Tabela contendo informações sobre os paises e regioes
+        
