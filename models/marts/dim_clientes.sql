@@ -11,10 +11,10 @@ with
         from {{ ref("stg_sap_pessoas") }}
         )
 
-    , territoriovendas as (
-        select * 
-        from {{ ref("stg_sap_territoriovendas") }}
-        )
+    --, territoriovendas as (
+    --    select * 
+    --    from {{ ref("stg_sap_territoriovendas") }}
+    --    )
 
     , entidadenegocios as (
         select * 
@@ -55,48 +55,36 @@ with
         select
             entidadenegocios.pk_id_entidadenegocio
             , clientes.pk_id_cliente
-            , territoriovendas.pk_id_territorio
-            , cartoes.pk_id_cartao  
+            --, territoriovendas.pk_id_territorio
+            , cartoes.pk_id_cartao 
+            , endereco.pk_id_endereco	
+            , estado.pk_id_estado
+
             , pessoas.cliente
             , pessoas.tipo_pessoa
-            , territoriovendas.territorio
-            , territoriovendas.sigla
-            , territoriovendas.regiao   
+            , endereco.cidade					
+            , estado.sigla_estado					
+            , estado.estado	
+            , estado.sigla_pais					
+            , pais.pais
             , cartoes.bandeira_cartao       
             , cartoes.numero_cartao                 
             , cartoes.mes_validade                  
-            , cartoes.ano_validade              
-            , cartoes.data_modificada_cartoes 
+            , cartoes.ano_validade   
 
-            cast(businessentityid as integer) as fk_id_entidadenegocio				
-            , cast(addressid as integer) as fk_id_endereco					
-            --, addresstypeid					
-            , cast(rowguid as string) as rowguid_enderecoentidades				
-            , cast(modifieddate as datetime) as data_modificada_enderecoentidades
-
-            cast(addressid as integer) as pk_id_endereco				
-            --, addressline1					
-            --, addressline2					
-            , cast(city as string) as cidade					
-            , cast(stateprovinceid as integer) as fk_id_estado 					
-            --, postalcode					
-            --, spatiallocation					
-            , cast(rowguid as string) as rowguid_endereco					
-            , cast(modifieddate as datetime) as data_modificada_endereco  
-
-            cast(stateprovinceid as integer) as pk_id_estado					
-            , cast(stateprovincecode as string) as sigla_estado					
-            , cast(countryregioncode as string) as sigla_pais					
-            --, isonlystateprovinceflag				
-            , cast(name as string) as estado					
-            , cast(territoryid as integer)	as fk_id_territorio				
-            , cast(rowguid as string) as rowguid_estado					
-            , cast(modifieddate as datetime) as data_modificada_estado 
-
-            cast(countryregioncode	as string) as sigla_pais			
-            , cast(name	as string) as pais			
-            , cast(modifieddate as datetime) as data_modificada_pais    
-            
+            --, cartoes.data_modificada_cartoes 
+            --, endereco.fk_id_estado 				
+            --, endereco.rowguid_endereco					
+            --, endereco.data_modificada_endereco
+            --, enderecoentidadenegocios.fk_id_entidadenegocio				
+            --, enderecoentidadenegocios.fk_id_endereco					
+            --, enderecoentidadenegocios.rowguid_enderecoentidades				
+            --, enderecoentidadenegocios.data_modificada_enderecoentidades 
+            --, estado.fk_id_territorio				
+            --, estado.rowguid_estado					
+            --, estado.data_modificada_estado 
+            --, pais.sigla_pais			            		
+            --, pais.data_modificada_pais                
             --, entidadenegocios.data_modificada_entidadenegocio
             --, pessoas.fk_id_entidadenegocio
             --, pessoas.data_modificada_pessoa
@@ -109,7 +97,10 @@ with
             --, territoriovendas.data_modificada_territoriovendas
             --, fk_id_entidadenegocio                   
             --, fk_id_cartao                    
-            -- , data_modificada_cartoesclientes    
+            --, data_modificada_cartoesclientes  
+            --, territoriovendas.territorio
+            --, territoriovendas.sigla
+            --, territoriovendas.regiao     
             , entidadenegocios.rowguid_entidadenegocio
             , pessoas.rowguid_pessoa
 
