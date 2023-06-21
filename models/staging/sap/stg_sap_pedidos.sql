@@ -30,8 +30,8 @@ with
             --, freight					
             --, totaldue					
             --, comment					
-            , cast(rowguid as string) as rowguid_pedidos					
-            , cast(modifieddate as datetime) as data_modificada_pedidos		               
+            , cast(rowguid as string) as rowguid_pedido				
+            , cast(modifieddate as datetime) as data_modificada_pedido		               
         from fonte_pedidos
     )
 select *
