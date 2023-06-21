@@ -16,22 +16,22 @@ with
             --, onlineorderflag					
             , cast(purchaseordernumber as string) as ordem_compra					
             , cast(accountnumber as string) as numero_conta_financeiro					
-            , cast(customerid) as fk_id_cliente				
-            , cast(salespersonid) as fk_id_vendedor					
-            , cast(territoryid) as fk_id_territorio					
+            , cast(customerid as integer) as fk_id_cliente				
+            , cast(salespersonid as integer) as fk_id_entidadenegocio					
+            , cast(territoryid as integer) as fk_id_territorio					
             --, billtoaddressid					
-            , cast(shiptoaddressid					
-            , cast(shipmethodid					
-            , cast(creditcardid					
-            , cast(creditcardapprovalcode					
-            , cast(currencyrateid					
-            , cast(subtotal					
-            , cast(taxamt					
-            , cast(freight					
-            , cast(totaldue					
-            , cast(comment					
-            , cast(rowguid					
-            , cast(modifieddate		               
+            , cast(shiptoaddressid as integer) as fk_id_endereco					
+            --, shipmethodid					
+            , cast(creditcardid as integer) as fk_id_cartao					
+            --, creditcardapprovalcode					
+            --, currencyrateid					
+            --, subtotal					
+            --, taxamt					
+            --, freight					
+            --, totaldue					
+            --, comment					
+            , cast(rowguid as string) as rowguid_pedidos					
+            , cast(modifieddate as datetime) as data_modificada_pedidos		               
         from fonte_pedidos
     )
 select *
