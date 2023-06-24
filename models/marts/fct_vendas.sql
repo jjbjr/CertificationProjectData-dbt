@@ -84,3 +84,6 @@ with
 
 select *
 from join_tabelas
+--limit 131933
+/* Revisar todas as tabelas pois o preco sugerido de venda esta muito direferente do preco 
+na venda mesmo aplicando o desconto*/
