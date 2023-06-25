@@ -55,7 +55,7 @@ sources:
       - name: salesorderdetail
         description: Tabela contendo os pedidos de venda
         columns:
-          - name: salesorderid
+          - name: salesorderdetailid
             description: chave primaria
             tests:
               - not_null

@@ -4,7 +4,7 @@ models:
   - name: int_pedidos
     description: Tabela intermediaria unindo pedidos (salesorderheader), detalhepedidos (salesorderdetail) e motivos (salesreason)
     columns:
-      - name: sk_pedidos
+      - name: sk_pedido
         description: chave substituta
         tests:
           - unique

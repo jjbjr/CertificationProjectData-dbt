@@ -17,7 +17,7 @@ with
             , cast(purchaseordernumber as string) as ordem_compra					
             , cast(accountnumber as string) as numero_conta_financeiro					
             , cast(customerid as integer) as fk_id_cliente				
-            , cast(salespersonid as integer) as fk_id_entidadenegocio					
+            --, cast(salespersonid as integer) as fk_id_entidadenegocio					
             , cast(territoryid as integer) as fk_id_territorio					
             --, billtoaddressid					
             , cast(shiptoaddressid as integer) as fk_id_endereco					
