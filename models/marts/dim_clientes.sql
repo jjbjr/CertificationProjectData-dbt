@@ -14,6 +14,7 @@ with
         select
             pessoas.fk_id_entidadenegocio
             , clientes.fk_id_pessoa
+            , clientes.pk_id_cliente
             
             , pessoas.cliente
             , pessoas.tipo_pessoa
