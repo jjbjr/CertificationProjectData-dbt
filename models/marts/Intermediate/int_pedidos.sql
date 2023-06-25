@@ -11,8 +11,6 @@ with
         from {{ ref('stg_sap_detalhepedidos') }}
     )
 
-    
-
     , join_tabelas as (
         select
             pedidos.pk_id_pedido as id_pedido			
