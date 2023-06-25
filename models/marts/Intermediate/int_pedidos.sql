@@ -11,15 +11,7 @@ with
         from {{ ref('stg_sap_detalhepedidos') }}
     )
 
-    , motivovendas as (
-        select *
-        from {{ ref('stg_sap_motivovendas') }}
-    )
-
-    , crosspedidomotivos as (
-        select * 
-        from {{ ref('stg_sap_crosspedidomotivos') }}
-    )
+    
 
     , join_tabelas as (
         select
