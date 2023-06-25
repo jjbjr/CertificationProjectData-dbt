@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: dim_clientes
+    description: Tabela dimensao clientes
+    columns:
+      - name: sk_cliente
+        description: chave substituta
+        tests:
+          - unique
+          - not_null
