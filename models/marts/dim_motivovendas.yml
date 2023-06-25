@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: dim_motivovendas
+    description: Tabela dimensao contendo os motivos de venda
+    columns:
+      - name: sk_motivovenda
+        description: chave substituta
+        tests:
+          - unique
+          - not_null
