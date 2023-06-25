@@ -58,6 +58,13 @@ with
         from {{ ref('dim_enderecos') }}
     )
 
+    , cartoes as (
+        select
+            sk_cartao
+            , pk_id_cartao as id_cartao
+        from {{ ref('dim_cartoes') }}
+    )
+
     , join_tabelas as (
         select
             pedidos.id_pedido as pk_pedido
@@ -65,6 +72,7 @@ with
             , produtos.sk_produto as fk_produto
             , motivos.sk_motivovenda as fk_motivovenda
             , enderecos.sk_endereco as fk_id_endereco
+            , cartoes.sk_cartao as fk_cartao
             , pedidos.data_pedido
             , pedidos.quantidade		
             , pedidos.precounitario					
@@ -80,6 +88,7 @@ with
         left join produtos on pedidos.id_produto = produtos.id_produto
         left join crossmotivos on pedidos.id_pedido = crossmotivos.id_pedido
         left join motivos on crossmotivos.id_motivovenda = motivos.id_motivovenda
+        left join cartoes on pedidos.id_cartao = cartoes.id_cartao
 
     )
 
