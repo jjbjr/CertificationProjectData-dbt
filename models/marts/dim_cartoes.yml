@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: dim_cartoes
+    description: Tabela dimensao cartoes de credito
+    columns:
+      - name: sk_cartao
+        description: chave substituta
+        tests:
+          - unique
+          - not_null
