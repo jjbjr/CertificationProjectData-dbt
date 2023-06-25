@@ -25,7 +25,7 @@ with
             , cast(creditcardid as integer) as fk_id_cartao					
             --, creditcardapprovalcode					
             --, currencyrateid					
-            --, subtotal					
+            , cast(subtotal as decimal) as subtotal_pedido					
             --, taxamt					
             --, freight					
             --, totaldue					

@@ -67,8 +67,8 @@ with
             , produtos.modelo 	
             , produtos.produto						
             , produtos.numero_produto						
-            , produtos.preco_custo					
-            , produtos.preco_venda		
+            --, produtos.preco_custo					
+            --, produtos.preco_venda		
             
 
         from pedidos

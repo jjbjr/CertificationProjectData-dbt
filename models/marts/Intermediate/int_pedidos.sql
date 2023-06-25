@@ -36,7 +36,8 @@ with
             , pedidos.data_pedido
             , detalhepedidos.quantidade		
             , detalhepedidos.precounitario					
-            , detalhepedidos.desconto				
+            , detalhepedidos.desconto
+            , pedidos.subtotal_pedido				
             , pedidos.revisao_pedido		
             , pedidos.data_envio					
             , pedidos.status_pedido					
