@@ -130,3 +130,4 @@ with
 select *
 from transformacoes
 order by pk_id_entidadenegocio asc
+limit 20812

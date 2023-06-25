@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: dim_enderecos
+    description: Tabela dimensao endereços
+    columns:
+      - name: sk_endereco
+        description: chave substituta
+        tests:
+          - unique
+          - not_null
