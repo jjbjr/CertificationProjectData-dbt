@@ -8,6 +8,6 @@ with
         where data_pedido between '2013-01-01' and '2013-12-31'
     )
 select total_produto
-from 
+from vendas
 
 -- 136.309
