@@ -12,5 +12,7 @@ with
     )
 select total_produto
 from vendas
-where total_produto != 136309
+where total_produto != 131788
+
+-- 136309 valor devido duplicidade motivo-vendas por item pedido
 

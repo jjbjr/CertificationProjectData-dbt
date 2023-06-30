@@ -10,4 +10,5 @@ with
 select total_produto
 from vendas
 
--- 136.309
+-- 131788 valor original do SAP
+-- 136.309 duplicidade motivo vendas
