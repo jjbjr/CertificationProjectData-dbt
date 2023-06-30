@@ -40,17 +40,16 @@ with
     , motivos as (
         select
             sk_motivovenda
-            , id_pedido
-            , motivo
+            , pk_id_motivovenda as id_motivovenda
         from {{ ref('dim_motivovendas') }}
     )
 
-    --, crossmotivos as (
-    --    select 
-    --        fk_id_pedido as id_pedido				
-    --        , fk_id_motivovenda as id_motivovenda
-    --    from {{ ref('stg_sap_crosspedidomotivos') }}
-    --)
+    , crossmotivos as (
+        select 
+            fk_id_pedido as id_pedido				
+            , fk_id_motivovenda as id_motivovenda
+        from {{ ref('stg_sap_crosspedidomotivos') }}
+    )
 
     , enderecos as (
         select 
@@ -81,22 +80,21 @@ with
             , pedidos.data_envio					
             , pedidos.status_pedido					
             , pedidos.ordem_compra					
-            , pedidos.numero_conta_financeiro
-            --, motivos.motivo	
+            , pedidos.numero_conta_financeiro	
                         
         from pedidos
         left join clientes on pedidos.id_cliente = clientes.id_cliente
         left join enderecos on pedidos.id_endereco = enderecos.id_endereco
         left join produtos on pedidos.id_produto = produtos.id_produto
-        --left join crossmotivos on pedidos.id_pedido = crossmotivos.id_pedido
-        left join motivos on pedidos.id_pedido = motivos.id_pedido
+        left join crossmotivos on pedidos.id_pedido = crossmotivos.id_pedido
+        left join motivos on crossmotivos.id_motivovenda = motivos.id_motivovenda
         left join cartoes on pedidos.id_cartao = cartoes.id_cartao
 
     )
 
     , transformacoes as (
         select 
-            {{ dbt_utils.generate_surrogate_key(['pk_pedido', 'fk_produto']) }} as sk_venda
+            {{ dbt_utils.generate_surrogate_key(['pk_pedido', 'fk_produto', 'fk_motivovenda']) }} as sk_venda
             , *
 
         from join_tabelas
@@ -104,4 +102,3 @@ with
 
 select *
 from transformacoes
---limit 200000
