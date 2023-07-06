@@ -17,7 +17,7 @@ with
             , subtotal_pedido				
             , revisao_pedido		
             , data_envio					
-            , status_pedido					
+            , status_pedido	as status_pedido_cod				
             , ordem_compra					
             , numero_conta_financeiro	
         from {{ ref('int_pedidos') }}
@@ -72,7 +72,7 @@ with
             , pedidos.precounitario					
             , pedidos.desconto				
             , pedidos.data_envio					
-            , pedidos.status_pedido					
+            , pedidos.status_pedido_cod					
             , pedidos.ordem_compra					
             , pedidos.numero_conta_financeiro
             
@@ -90,6 +90,14 @@ with
         select 
             {{ dbt_utils.generate_surrogate_key(['pk_pedido', 'fk_produto']) }} as sk_venda
             , *
+            , case 
+                when status_pedido_cod = 1 then "Em processo"
+                when status_pedido_cod = 2 then "Aprovado"
+                when status_pedido_cod = 3 then "Em espera"
+                when status_pedido_cod = 4 then "Rejeitado"
+                when status_pedido_cod = 5 then "Enviado"
+                else "Cancelado"
+              end as status_pedido
 
         from join_tabelas
     )
