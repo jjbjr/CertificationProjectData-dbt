@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: dim_produtos
+    description: Tabela dimensao contendo os produtos e 
+    columns:
+      - name: sk_produto
+        description: chave substituta
+        tests:
+          - unique
+          - not_null
